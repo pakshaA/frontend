@@ -1,0 +1,631 @@
+.layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.rightColumn {
+  min-width: 0;
+}
+
+.chartsStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chartCard {
+  padding: 1rem 1.1rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+
+.chartCard h3 {
+  font-size: 0.95rem;
+  font-weight: 650;
+  margin-bottom: 0.5rem;
+}
+
+.chartBox,
+.chartBoxTall {
+  width: 100%;
+}
+
+.topActions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.periodFilter {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+
+@media (min-width: 720px) {
+  .periodFilter {
+    grid-template-columns: minmax(10rem, 1.2fr) 1fr 1fr;
+    align-items: end;
+  }
+
+  .periodFilter[data-with-scope="true"] {
+    grid-template-columns: minmax(9rem, 1.1fr) 1fr 1fr minmax(9rem, 1.1fr);
+  }
+}
+
+.periodField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.periodField select,
+.periodField input {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+}
+
+.periodField select:focus,
+.periodField input:focus {
+  border-color: var(--accent);
+}
+
+.balancePeriod {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.balanceCard {
+  padding: 1.25rem 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+}
+
+.balanceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.balanceLabel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.balanceValueWrap {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.35rem;
+}
+
+.balanceValueHover {
+  cursor: help;
+}
+
+.balanceValue {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.balanceValue[data-negative="true"] {
+  color: var(--expense);
+}
+
+.balanceTooltip {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.4rem);
+  z-index: 20;
+  min-width: min(18rem, 80vw);
+  max-width: 22rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+}
+
+.balanceValueHover:hover .balanceTooltip,
+.balanceValueHover:focus-within .balanceTooltip {
+  display: block;
+}
+
+.balanceTooltipTitle {
+  margin: 0 0 0.45rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.balanceTooltipList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.balanceTooltipList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.balanceTooltipList span {
+  color: var(--text-muted);
+}
+
+.balanceTooltipList strong {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.balanceMeta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.income {
+  color: var(--income);
+}
+
+.expense {
+  color: var(--expense);
+}
+
+.panel {
+  padding: 1rem 1.15rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.panelHeader h2 {
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+
+.addBtn,
+.primaryBtn {
+  border: none;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--accent);
+  color: #04120f;
+  font-weight: 600;
+  padding: 0.65rem 0.9rem;
+  cursor: pointer;
+}
+
+.addBtn:hover,
+.primaryBtn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.ghostBtn {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.ghostBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.txForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--bg);
+}
+
+.txFormHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.txFormHeader h3 {
+  font-size: 0.95rem;
+}
+
+.scanBtn {
+  border: 1px dashed color-mix(in srgb, var(--accent) 55%, var(--border));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font-weight: 600;
+  padding: 0.65rem 0.9rem;
+  cursor: pointer;
+}
+
+.scanBtn:hover {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.qrOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(6, 10, 14, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.qrPanel {
+  width: min(100%, 26rem);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+}
+
+.qrHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.qrHeader h3 {
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.qrHint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.qrViewport {
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+  min-height: 240px;
+}
+
+.qrViewport video {
+  width: 100% !important;
+  border-radius: 10px;
+}
+
+.txForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.txForm input,
+.txForm select {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  outline: none;
+}
+
+.txForm input:focus,
+.txForm select:focus {
+  border-color: var(--accent);
+}
+
+.row2 {
+  display: grid;
+  gap: 0.65rem;
+}
+
+@media (min-width: 520px) {
+  .row2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.categoryBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.linkBtn {
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.linkBtn:hover {
+  color: var(--accent-hover);
+}
+
+.newCategoryRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.newCategoryRow .primaryBtn {
+  padding: 0.55rem 0.85rem;
+}
+
+.txBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.txToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.txPageSize {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.txPageSize select {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+}
+
+.txPageSize select:focus {
+  border-color: var(--accent);
+}
+
+.txMeta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.txList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.txList[data-loading="true"] {
+  opacity: 0.65;
+  transition: opacity 0.15s ease;
+}
+
+.txPager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 0.25rem;
+}
+
+.txPagerInfo {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.txPager .ghostBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.txItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.15rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+}
+
+.txItem:last-child {
+  border-bottom: none;
+}
+
+.txMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.txCategory {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.txDate,
+.txComment,
+.muted {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.txComment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 16rem;
+}
+
+.txRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.txAmount {
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.txAmount[data-type="income"] {
+  color: var(--income);
+}
+
+.txAmount[data-type="expense"] {
+  color: var(--expense);
+}
+
+.txDelete {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.txDelete:hover {
+  color: var(--danger);
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.guest {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 28rem;
+}
+
+.guestActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.topBarEmail {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.insightsGrid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .insightsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.insightLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.insightList {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

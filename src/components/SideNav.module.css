@@ -1,0 +1,331 @@
+.backdrop {
+  display: none;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 40;
+  width: var(--sidebar-width, 17rem);
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 0.85rem 1.25rem;
+  border-right: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--accent) 10%, transparent) 0%,
+      transparent 42%
+    ),
+    color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow: 8px 0 32px rgba(0, 0, 0, 0.18);
+  transform: translateX(0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.15rem 0.4rem 1.1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text);
+  min-width: 0;
+}
+
+.brand:hover {
+  color: var(--text);
+}
+
+.brandMark {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 0.2rem;
+  background: linear-gradient(135deg, var(--accent), #5ec4b0);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+  animation: markPulse 3.2s ease-in-out infinite;
+}
+
+.brandText {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.brandText span {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.closeBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.closeBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.sectionLabel {
+  margin: 0.35rem 0.55rem 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.link {
+  --i: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 550;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+  animation: linkIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i) * 40ms);
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: translateY(-50%);
+  opacity: 0;
+  transition:
+    height 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease;
+}
+
+.link:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg-muted) 55%, transparent);
+  transform: translateX(2px);
+}
+
+.link[data-active="true"] {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  font-weight: 650;
+}
+
+.link[data-active="true"]::before {
+  height: 1.15rem;
+  opacity: 1;
+}
+
+.link[data-active="true"] .icon {
+  color: var(--accent);
+  transform: scale(1.06);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition:
+    color 0.2s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+}
+
+.activeGlow {
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 28%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: glowIn 0.45s ease both;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.mobileBar {
+  display: none;
+}
+
+.menuBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.35rem;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.menuBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.menuBtn:active {
+  transform: scale(0.96);
+}
+
+.mobileBrand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.mobileBrand:hover {
+  color: var(--accent);
+}
+
+@keyframes linkIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glowIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes markPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+}
+
+@media (max-width: 899px) {
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 35;
+    background: rgba(6, 10, 14, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .backdrop[data-open="true"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sidebar {
+    transform: translateX(-105%);
+    box-shadow: none;
+  }
+
+  .sidebar[data-open="true"] {
+    transform: translateX(0);
+    box-shadow: 12px 0 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .closeBtn {
+    display: inline-flex;
+  }
+
+  .mobileBar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .link,
+  .backdrop,
+  .brandMark,
+  .activeGlow,
+  .menuBtn {
+    animation: none !important;
+    transition: none !important;
+  }
+}

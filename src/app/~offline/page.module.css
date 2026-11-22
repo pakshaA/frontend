@@ -1,0 +1,22 @@
+.page {
+  max-width: 28rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 2rem 0;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 650;
+}
+
+.lead {
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.link {
+  color: var(--accent);
+  font-weight: 600;
+}

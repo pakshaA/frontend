@@ -1,0 +1,81 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 32rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.success {
+  color: var(--success);
+}
+
+.error {
+  color: var(--danger);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+
+.card h2 {
+  font-size: 1.05rem;
+}
+
+.card label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.card input,
+.card select {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+}
+
+.card input:focus,
+.card select:focus {
+  border-color: var(--accent);
+}
+
+.card button[type="submit"] {
+  align-self: flex-start;
+  border: none;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--accent);
+  color: #04120f;
+  font-weight: 600;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+}
+
+.card button[type="submit"]:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.card button[type="submit"]:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
